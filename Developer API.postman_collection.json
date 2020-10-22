@@ -1,0 +1,286 @@
+{
+	"info": {
+		"_postman_id": "d5184443-694b-4e8e-bf5a-f975f547e7bb",
+		"name": "Developer API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST Accounts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e427cd35-fa8a-434c-9ee7-e6597175edfb",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"pm.environment.set(\"accountId\", data[\"Accounts\"][0][\"accountId\"])"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Version",
+						"value": "1.0",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authJwt}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quantity\": \"15\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/accounts/create",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"accounts",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Accounts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "35506ba2-d354-4965-abca-6e1ce56766b2",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"pm.environment.set(\"accountId\", data[\"Accounts\"][0][\"accountId\"])"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Version",
+						"type": "text",
+						"value": "1.0"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{authJwt}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/accounts",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ef7b65c9-bfae-465f-8c6f-531e1f8304d2",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Version",
+						"type": "text",
+						"value": "1.0"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{authJwt}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/accounts/{{accountId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"accounts",
+						"{{accountId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Transaction",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "544cbbb5-4c0d-4294-b6ae-5336f2b2ade7",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "cd80e0d0-eeca-4383-b1a5-b26cae90b9fd",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"pm.environment.set(\"accountId\", data[\"Transactions\"][0][\"accountUUID\"])",
+							"pm.environment.set(\"transactionId\", data[\"Transactions\"][0][\"transactionUUID\"])"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Version",
+						"value": "1.0",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{authJwt}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quantity\": \"15\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/transactions/accounts/{{accountId}}/create",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"transactions",
+						"accounts",
+						"{{accountId}}",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Transactions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "94de084c-fc49-4e6a-b5b9-2f525f901275",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"pm.environment.set(\"accountId\", data[\"Transactions\"][0][\"accountUUID\"])",
+							"pm.environment.set(\"transactionId\", data[\"Transactions\"][0][\"transactionUUID\"])"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Version",
+						"type": "text",
+						"value": "1.0"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{authJwt}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/transactions/accounts/{{accountId}}/transactions",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"transactions",
+						"accounts",
+						"{{accountId}}",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Transaction",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Version",
+						"type": "text",
+						"value": "1.0"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{authJwt}}"
+					}
+				],
+				"url": {
+					"raw": "{{baseUrl}}/transactions/accounts/{{accountId}}/transactions/{{transactionId}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"transactions",
+						"accounts",
+						"{{accountId}}",
+						"transactions",
+						"{{transactionId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
