@@ -10,7 +10,7 @@ A postman collection to get you up and running with Capital One UK's Developer A
 1. Download this repository to your local machine!
 2. Head over to https://www.postman.com/downloads/ and either download the client - or log-in via the web.
 3. Once you're up and running with postman - choose the "Import" option.
-4. Drag and drop the collection into the import window.
+4. Drag and drop the `postman_collection` and `postman_environment` into the import window.
 
 ## Adding Environment Variables
 1. Remember the unique access code we provided you with earlier? You now need to store this in the `authJwt` environment variable. To do this head to the icon shaped like an eye in the top right hand corner of the window. Select edit and paste your authentication code into the table.
