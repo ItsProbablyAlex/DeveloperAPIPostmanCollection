@@ -14,6 +14,7 @@ A postman collection to get you up and running with Capital One UK's Developer A
 
 ## Adding Environment Variables
 1. Remember the unique access code we provided you with earlier? You now need to store this in the `authJwt` environment variable. To do this head to the icon shaped like an eye in the top right hand corner of the window. Select edit and paste your authentication code into the table.
-
+2. Make some requests from the pre-configured collection! 
+3. Check out all of our documentation here: https://developer.capitalone.co.uk/api/customer/index.html
 # You should now have everything you need to start working with Developer API. Happy Hackathon'ing!
 
