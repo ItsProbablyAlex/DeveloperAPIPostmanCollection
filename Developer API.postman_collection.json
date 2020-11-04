@@ -205,6 +205,72 @@
 			"response": []
 		},
 		{
+			"name": "POST Fraudulent Transaction  - Overseas Spending",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "3a40f06f-bd05-422f-a042-580e04009b74",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "27e24f81-807a-43d2-a78b-0ce34297617e",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"pm.environment.set(\"accountId\", data[\"Transactions\"][0][\"accountUUID\"])",
+							"pm.environment.set(\"transactionId\", data[\"Transactions\"][0][\"transactionUUID\"])"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Version",
+						"type": "text",
+						"value": "1.0"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{authJwt}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fraudType\": \"unusuallyLarge\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/fraud/transactions/accounts/{{accountId}}/create",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"fraud",
+						"transactions",
+						"accounts",
+						"{{accountId}}",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "GET Transactions",
 			"event": [
 				{
@@ -276,6 +342,138 @@
 						"{{accountId}}",
 						"transactions",
 						"{{transactionId}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Fraudulent Transaction  - Overseas Spending Copy",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "778f7158-ed9b-468c-908d-b031cab3546f",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "d2de10f8-1144-4374-a0dc-99f5c6f539bc",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"pm.environment.set(\"accountId\", data[\"Transactions\"][0][\"accountUUID\"])",
+							"pm.environment.set(\"transactionId\", data[\"Transactions\"][0][\"transactionUUID\"])"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Version",
+						"type": "text",
+						"value": "1.0"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{authJwt}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fraudType\": \"multipleDeclined\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/fraud/transactions/accounts/{{accountId}}/create",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"fraud",
+						"transactions",
+						"accounts",
+						"{{accountId}}",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Fraudulent Transaction  - Unusually Large",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "829711f8-dadb-4cd0-9f42-b9ddc9426c2f",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "7b475e93-77d3-490e-bf1e-dc13244f69e5",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"pm.environment.set(\"accountId\", data[\"Transactions\"][0][\"accountUUID\"])",
+							"pm.environment.set(\"transactionId\", data[\"Transactions\"][0][\"transactionUUID\"])"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					},
+					{
+						"key": "Version",
+						"type": "text",
+						"value": "1.0"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer {{authJwt}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fraudType\": \"unusuallyLarge\"\r\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/fraud/transactions/accounts/{{accountId}}/create",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"fraud",
+						"transactions",
+						"accounts",
+						"{{accountId}}",
+						"create"
 					]
 				}
 			},
